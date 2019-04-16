@@ -4,7 +4,7 @@ import { withNamespaces, Link, i18n } from "../utils/i18n";
 class AboutPage extends Component {
   static async getInitialProps() {
     return {
-      namespacesRequired: ["index"]
+      namespacesRequired: ["common"]
     };
   }
 
@@ -30,4 +30,4 @@ class AboutPage extends Component {
   }
 }
 
-export default withNamespaces(["index"])(AboutPage);
+export default withNamespaces(["common"])(AboutPage);
