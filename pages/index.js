@@ -22,6 +22,10 @@ class HomePage extends Component {
           <a>{t("goToAbout")}</a>
         </Link>
         <br />
+        <Link href="/contact">
+          <a>{t("goToContact")}</a>
+        </Link>
+        <br />
         <button type="button" onClick={this.handleChangeLanguage}>
           {t("changeLang")}
         </button>

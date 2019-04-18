@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { withRouter } from "next/router";
-import { withNamespaces, i18n } from "../../utils/i18n";
+import { withNamespaces, Link, i18n } from "../utils/i18n";
 
-class Post extends Component {
+class ContactPage extends Component {
   static async getInitialProps() {
     return {
       namespacesRequired: ["common"]
@@ -14,12 +13,15 @@ class Post extends Component {
   };
 
   render() {
-    const { router, t } = this.props;
+    const { t } = this.props;
 
     return (
       <div>
-        <h1>Single Post</h1>
-        <p>{router.query.id}</p>
+        <h1>{t("contact")}</h1>
+        <Link href="/">
+          <a>{t("goToHome")}</a>
+        </Link>
+        <br />
         <button type="button" onClick={this.handleChangeLanguage}>
           {t("changeLang")}
         </button>
@@ -28,4 +30,4 @@ class Post extends Component {
   }
 }
 
-export default withNamespaces("common")(withRouter(Post));
+export default withNamespaces(["common"])(ContactPage);
