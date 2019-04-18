@@ -1,6 +1,7 @@
 const express = require("express");
 const next = require("next");
 const nextI18NextMiddleware = require("next-i18next/middleware");
+const { parse } = require("url");
 
 const nextI18next = require("./utils/i18n");
 
@@ -13,6 +14,13 @@ const handle = app.getRequestHandler();
   const server = express();
 
   server.use(nextI18NextMiddleware(nextI18next));
+
+  server.get(/\/(about|tentang)/, (req, res) => {
+    const parsedUrl = parse(req.url, true);
+    const { query } = parsedUrl;
+
+    app.render(req, res, "/about", query);
+  });
 
   server.get("/post/:id", (req, res) => {
     app.render(req, res, "/post/_id", { id: req.params.id });
